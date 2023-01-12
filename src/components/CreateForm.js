@@ -1,28 +1,68 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setCategory } from '../features/Form/categorySlice'
+import { addCategory, addNewVideo } from '../features/Videos/videosSlice'
+import { setVideoCategory, setTitle, setVideoUrl } from '../features/Form/newVideoSlice'
 
 const CreateForm = () => {
+  const { category } = useSelector((store) => store.category);
+  const { categories } = useSelector((store) => store.categories);
+  const { title, video_url, videoCategory } = useSelector((store) => store.newVideo);
+  // console.log(title, video_url, videoCategory);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setVideoCategory(categories[0].categoryName))
+  }, [])
   return (
-      <div className='mx-2  p-5 bg-slate-300 rounded flex flex-col gap-5 lg:flex-row lg:justify-evenly'>
-        <div className='mb-3 p-3 bg-slate-400 w-full rounded lg:mb-0'>
-            <h2 className='mb-3 text-xl font-medium'>Add a category</h2>
-            <input className="p-2 my-3 w-full rounded" type="text" />
-            <button className='bg-blue-500 text-white px-5 py-2 rounded'>Add</button>
-        </div>
-        <div className=' p-3 bg-slate-400 w-full rounded lg:mt-0'>
-              <h2 className='mb-3 text-xl font-medium'>Add a new video</h2>
-              <label className='font-medium' htmlFor="name">Title</label>
-              <input className="p-2 my-3 w-full rounded" type="text" id="name" />
-              <label className='font-medium' htmlFor="video_link">Video Link</label>
-              <input className="p-2 my-3 w-full rounded" type="text" id="video_link" />
-              <label className='font-medium block' htmlFor="categories">
-                Category
-              </label>
-              <select className='block w-24 p-2 my-3 rounded' name="categories" id="categories">
-                <option value="Hello">Hello</option>
-                <option value="Hello">Hello</option>
-              </select>
-              <button className='bg-blue-500 text-white px-5 py-2 rounded'>Add</button>
-        </div>
+    <div className='mx-2  p-5 border-2 border-blue-500 rounded-xl flex flex-col gap-5 lg:flex-row lg:justify-evenly'>
+      <div className='mb-3 p-3 bg-white drop-shadow-lg w-full rounded lg:mb-0'>
+        <h2 className='mb-3 text-xl font-medium'>Add a category</h2>
+        <input className="p-2 my-3 w-full rounded border-2" type="text" value={category} onChange={(e) => { dispatch(setCategory(e.target.value)) }} />
+        <button className='bg-blue-500 text-white px-5 py-2 rounded' onClick={() => {
+          dispatch(addCategory(category))
+          dispatch(setCategory(""))
+        }}>Add</button>
+      </div>
+      <div className=' p-3 bg-white drop-shadow-lg w-full rounded lg:mt-0'>
+        <h2 className='mb-3 text-xl font-medium'>Add a new video</h2>
+          {/* title input */}
+          <label className='font-medium' htmlFor="name">Title</label>
+
+          <input className="p-2 my-3 w-full rounded border-2" type="text" id="name" value={title} onChange={(e) => { dispatch(setTitle(e.target.value)) }} />
+
+          {/* video url input */}
+          <label className='font-medium' htmlFor="video_link">Video Link</label>
+
+          <input className="p-2 my-3 w-full rounded border-2" type="text" id="video_link" value={video_url} onChange={(e) => { dispatch(setVideoUrl(e.target.value)) }} />
+
+          {/* category select input */}
+          <label className='font-medium block' htmlFor="categories">
+            Category
+          </label>
+
+          <select className='block w-36 p-2 my-3 rounded border-2' name="categories" id="categories" value={videoCategory} onChange={(e) => {
+            dispatch(setVideoCategory(e.target.value))
+            console.log(e.target.value)
+          }}>
+            {
+              categories.map((current, index) => {
+                const { categoryName } = current;
+                return (
+                  <option key={index} value={categoryName}>{categoryName}</option>
+                )
+              })
+            }
+          </select>
+
+          {/* Add button */}
+        <button className='bg-blue-500 text-white px-5 py-2 rounded' onClick={() =>{
+          dispatch(addNewVideo({ title, video_url, videoCategory }))
+          dispatch(setTitle(""));
+          // dispatch(setCategory(categories[0].category));
+          dispatch(setVideoUrl(""));
+        }}>Add</button>
+        {/* </form> */}
+      </div>
     </div>
   )
 }

@@ -4,13 +4,13 @@ const buckets = [
         videos: [
             {
                 id: "1",
-                title: "first video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "Mr Doodle",
+                video_url: "https://youtube.com/embed/f7ke3HznCCo"
             },
             {
                 id: "2",
-                title: "second video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "face",
+                video_url: "https://fb.watch/h-OCX3-ekj/"
             }
         ]
     },
@@ -19,8 +19,8 @@ const buckets = [
         videos: [
             {
                 id: "1",
-                title: "first video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "Why Doritos Are SO DAMN GOOD!!!",
+                video_url: "https://youtube.com/embed/ue0xQZ_thA4"
             },
             {
                 id: "2",

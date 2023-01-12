@@ -11,18 +11,18 @@ const Buckets = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='mx-2 my-8 py-10 px-3 bg-slate-300 rounded xl:flex xl:gap-5 overflow-scroll xl:flex-row'>
+    <div className='mx-2 my-8 py-10 px-3 border-2 border-blue-500 rounded-xl xl:flex xl:gap-5 overflow-scroll xl:flex-row xl:px-10'>
       {/* <h2 className='mb-3 text-xl font-medium' >Watch History</h2> */}
       {
         categories.map((current, index) => {
           const { categoryName, videos } = current;
           // console.log(categoryName);
           return (
-            <div key={index} className='relative bg-slate-400 my-12 p-3 rounded-r rounded-b min-w-[400px]'>
-              <div className='absolute px-5 p-2 bg-orange-300 -top-10 left-0 rounded-t flex gap-4 items-center'>
+            <div key={index} className='relative bg-white drop-shadow-lg my-12 p-3 rounded-r rounded-b min-w-[400px]'>
+              <div className='absolute px-5 p-2 bg-blue-500 text-white -top-10 left-0 rounded-t flex gap-4 items-center'>
                 <div className='flex gap-1 items-center'>
                   <h3 className='font-medium'>{categoryName}</h3>
-                  <span className='rounded-full bg-black w-5 h-5 p-1 text-white text-sm flex justify-center items-center'>{videos.length}</span>
+                  <span className='rounded-full  w-5 h-5 p-1 text-white text-sm flex justify-center items-center'>{videos.length}</span>
                 </div>
                 <div className='flex gap-3'>
                   <button><AiOutlineEdit /></button>
