@@ -2,10 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Card from './Card';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
+import { removeBucket } from '../features/Videos/videosSlice';
+import { useDispatch } from 'react-redux';
 
 const Buckets = () => {
   const { categories } = useSelector((store) => store.categories);
   // console.log(categories);
+  const dispatch = useDispatch();
 
   return (
     <div className='mx-2 my-8 py-10 px-3 bg-slate-300 rounded xl:flex xl:gap-5 overflow-scroll xl:flex-row'>
@@ -23,14 +26,16 @@ const Buckets = () => {
                 </div>
                 <div className='flex gap-3'>
                   <button><AiOutlineEdit /></button>
-                  <button><AiOutlineDelete /></button>
+                  <button onClick={()=>{
+                    dispatch(removeBucket(categoryName))
+                  }}><AiOutlineDelete /></button>
                 </div>
               </div>
               {
                 videos.map((video, index) => {
                   const { id } = video;
                   return (
-                    <Card key={id} video={video} />
+                    <Card key={id} category={categoryName} video={video} />
                   )
                 })
               }
