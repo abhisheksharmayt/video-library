@@ -56,7 +56,7 @@ Project structure
 
 ## Additonal Packages used
 
-- `react-redux, *reduxjs/toolkit` for state management
+- `react-redux, @reduxjs/toolkit` for state management
 - `react-beautiful-dnd` for drag-n-drop functionality
 - `react-icons` form icons
 
