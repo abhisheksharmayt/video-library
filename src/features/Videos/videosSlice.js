@@ -98,11 +98,26 @@ const videosSlice = createSlice({
         },
         clearWatchHistory: (state)=>{
             state.watchHistory = [];
+        },
+        changeCategory: (state, action)=>{
+            const { sourceCategory, videoIndexSource, destinationCategory, videoIndexDestination, videoCard } = action.payload;
+            let add;
+            state.categories.forEach((current)=>{
+                if(current.categoryId == sourceCategory){
+                    add = current.videos[videoIndexSource];
+                    current.videos.splice(videoIndexSource, 1)
+                }
+            })
+            state.categories.forEach((current)=>{
+                if(current.categoryId == destinationCategory){
+                    current.videos.splice(videoIndexDestination, 0, add);
+                }
+            })
         }
     },
 })
 
 // console.log(videosSlice);
-export const { removeCard, removeBucket, addCategory, addNewVideo, addCurrentPlaying, updateVideo, clearWatchHistory, updateCategory } = videosSlice.actions;
+export const { removeCard, removeBucket, addCategory, addNewVideo, addCurrentPlaying, updateVideo, clearWatchHistory, updateCategory, changeCategory } = videosSlice.actions;
 
 export default videosSlice.reducer;
