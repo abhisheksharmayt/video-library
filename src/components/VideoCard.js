@@ -12,7 +12,7 @@ const Card = ({ category, video }) => {
     const { id, title, video_url } = video;
     const dispatch = useDispatch();
     return (
-        <div className='bg-white border-2 p-3 rounded flex justify-between items-center mb-3'>
+        <div className='bg-white border-2 p-3 rounded self-start flex justify-between items-center mb-3'>
             <p className='text-sm pr-4 sm:text-base'>{title}</p>
             <div className='flex gap-4'>
                 <button className='bg-green-400 py-2 px-5 rounded' onClick={() => {

@@ -100,17 +100,17 @@ const videosSlice = createSlice({
             state.watchHistory = [];
         },
         changeCategory: (state, action)=>{
-            const { sourceCategory, videoIndexSource, destinationCategory, videoIndexDestination, videoCard } = action.payload;
+            const { sourceCategory, videoSourceIndex, destinationCategory, videoDestinationIndex} = action.payload;
             let add;
             state.categories.forEach((current)=>{
                 if(current.categoryId == sourceCategory){
-                    add = current.videos[videoIndexSource];
-                    current.videos.splice(videoIndexSource, 1)
+                    add = current.videos[videoSourceIndex];
+                    current.videos.splice(videoSourceIndex, 1)
                 }
             })
             state.categories.forEach((current)=>{
                 if(current.categoryId == destinationCategory){
-                    current.videos.splice(videoIndexDestination, 0, add);
+                    current.videos.splice(videoDestinationIndex, 0, add);
                 }
             })
         }

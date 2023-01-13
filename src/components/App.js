@@ -19,7 +19,7 @@ function App() {
       {isEditVideoModalOpen && <EditVideoModal />}
       {isEditCategoryModalOpen && <EditCategoryModal />}
       {isVideoModalOpen && <VideoModal />}
-      <div className={`relative p-5 bg-white h-screen ${isVideoModalOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
+      <div className={`p-5 bg-white h-screen ${isVideoModalOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
         <h1 className='text-3xl font-semibold ml-7 mb-5'>Video Library</h1>
         <div className='flex flex-col w-full xl:flex-row'>
           <div className='xl:w-2/3'>
