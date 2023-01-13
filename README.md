@@ -42,16 +42,21 @@ Project structure
 └── README.md
 └── tailwind.config.js
 ```
-## Screenshots
-
-![Main Page](https://i.imgur.com/kilwVkh.jpg)
-![Video Modal](https://i.imgur.com/jQjBP2a.jpg)
-![Update Modal](https://i.imgur.com/8uTsDP9.jpg)
-
 ## Setup
 - download or clone the repository
 - run `npm install`
 - to start run `npm start`
 - Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+## Screenshots
+
+![Main Page](https://i.imgur.com/kilwVkh.jpg)
+![Video Modal](https://i.imgur.com/jQjBP2a.jpg)
+![Update Modal](https://i.imgur.com/8uTsDP9.jpg)
+
+## Additonal Packages used
+
+- `react-redux, *reduxjs/toolkit` for state management
+- `react-beautiful-dnd` for drag-n-drop functionality
+- `react-icons` form icons
 
