@@ -1,21 +1,7 @@
 const buckets = [
     {
+        categoryId: "11",
         categoryName: "Educational",
-        videos: [
-            {
-                id: "1",
-                title: "Mr Doodle",
-                video_url: "https://youtube.com/embed/f7ke3HznCCo"
-            },
-            {
-                id: "2",
-                title: "face",
-                video_url: "https://fb.watch/h-OCX3-ekj/"
-            }
-        ]
-    },
-    {
-        categoryName: "Entertainment",
         videos: [
             {
                 id: "1",
@@ -24,31 +10,50 @@ const buckets = [
             },
             {
                 id: "2",
-                title: "second video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
-            },
-            {
-                id: "3",
-                title: "third video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "The Universe is Hostile to Computers",
+                video_url: "https://www.youtube.com/embed/AaZ_RSt0KP8"
             }
         ]
     },
     {
-        categoryName: "Random",
+        categoryId: "21",
+        categoryName: "Entertainment",
         videos: [
             {
                 id: "1",
-                title: "first video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "The Doodle House",
+                video_url: "https://youtube.com/embed/f7ke3HznCCo"
             },
             {
                 id: "2",
-                title: "second video",
-                video_url: "https://youtu.be/ue0xQZ_thA4"
+                title: "I spent 4 Days Inside INDIA'S LONGEST TRAIN (78+ Hours)",
+                video_url: "https://www.youtube.com/embed/v2TPe2KRlHQ"
+            },
+            {
+                id: "3",
+                title: "Imagine Dragons - Bones",
+                video_url: "https://www.youtube.com/embed/TO-_3tck2tg"
+            }
+        ]
+    },
+    {
+        categoryId: "31",
+        categoryName: "Buisness",
+        videos: [
+            {
+                id: "1",
+                title: "Why Startup IPOs like Mamaearth are a Scam?",
+                video_url: "https://www.youtube.com/embed/0XGx_HoDbBs"
+            },
+            {
+                id: "2",
+                title: "How the World's Richest Country Lost 90% of its GDP",
+                video_url: "https://www.youtube.com/embed/Fe88ckTWyTU"
             },
         ]
     }
 ]
 
 export default buckets;
+
+// https://www.youtube.com/embed/NaFG73Wu2eo
