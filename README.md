@@ -1,4 +1,7 @@
-Project structure
+# Introduction
+A `Video Management` web app, I have used `ReactJS` for frontend, `Redux` for state management and `TailwindCSS` for styling. I have worked on enabling all C.R.U.D. features on frontend side.
+
+# Project structure
 -----------------------------------------
 
 ```
