@@ -55,9 +55,11 @@ const videosSlice = createSlice({
             const {id, title, video_url} = action.payload;
             const currentTimeAndDate = String(new Date)
             const currentVideo = { id, title, video_url, date: currentTimeAndDate.slice(0,-31) };
-            // console.log(currentTimeAndDate)
             state.currentPlaying = currentVideo;
-            state.watchHistory.unshift(currentVideo);
+            
+            const newHistory = state.watchHistory.filter((video)=> video.id != id);
+            newHistory.unshift(currentVideo);
+            state.watchHistory = newHistory;
         },
         updateVideo: (state, action)=>{
             const {id, title, video_url, videoCategory } = action.payload;

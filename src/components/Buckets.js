@@ -54,7 +54,7 @@ const Buckets = () => {
                 // console.log(categoryName);
                 return (
 
-                  <div key={categoryId} className='relative bg-white drop-shadow-lg my-12 mb-16 p-3 rounded-r rounded-b md:min-w-[400px] xl:w-[450px] xl:mb-12'>
+                  <div key={categoryId} className='relative bg-white drop-shadow-lg my-12 mb-16 p-3 pb-1 rounded-r rounded-b md:min-w-[400px] xl:w-[450px] xl:mb-12 self-start'>
 
                     {/*---- category title div ----*/}
 
@@ -83,7 +83,7 @@ const Buckets = () => {
                       {(droppableProvided, droppableSnapshot) => {
 
                         return (<div
-                          className='min-h-[50px]'
+                          className='min-h-[50px] relative z-10'
                           ref={droppableProvided.innerRef}
                           {...droppableProvided.droppableProps}
                         >
@@ -103,7 +103,7 @@ const Buckets = () => {
                                       position: 'static',
                                     };
 
-                                    return (<div className=''
+                                    return (<div className='relative z-20'
                                       ref={draggableProvided.innerRef}
                                       {...draggableProvided.draggableProps}
                                       {...draggableProvided.dragHandleProps}
