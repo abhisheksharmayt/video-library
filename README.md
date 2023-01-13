@@ -44,7 +44,9 @@ Project structure
 ```
 ## Screenshots
 
-`![Main Page](https://unsplash.com/photos/VBPzRgd7gfc)`
+![Main Page](https://i.imgur.com/kilwVkh.jpg)
+![Video Modal](https://i.imgur.com/jQjBP2a.jpg)
+![Update Modal](https://i.imgur.com/8uTsDP9.jpg)
 
 ## Setup
 - download or clone the repository
