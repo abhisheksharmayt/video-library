@@ -29,3 +29,18 @@
     padding: 5px;
     /* margin: 5px 50px; */
 }
+
+.video-card {
+    position: relative;
+    z-index: 999 !important;
+}
+
+.main-heading {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #000046, #1CB5E0);
+}

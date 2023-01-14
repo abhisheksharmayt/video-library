@@ -20,7 +20,7 @@ function App() {
       {isEditCategoryModalOpen && <EditCategoryModal />}
       {isVideoModalOpen && <VideoModal />}
       <div className={`p-5 bg-white h-screen ${isVideoModalOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
-        <h1 className='text-3xl font-semibold ml-7 mb-5'>Video Library</h1>
+        <h1 className='main-heading text-5xl font-semibold ml-7 mb-5 py-5'>Video Library</h1>
         <div className='flex flex-col w-full xl:flex-row'>
           <div className='xl:w-2/3'>
             <CreateForm></CreateForm>
