@@ -10,9 +10,7 @@ const CreateForm = () => {
   const { title, video_url, videoCategory } = useSelector((store) => store.newVideo);
   // console.log(title, video_url, videoCategory);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setVideoCategory(categories[0].categoryName))
-  }, [])
+
   return (
     <div className='mx-2  p-5 border-2 border-blue-500 rounded-xl flex flex-col gap-5 lg:flex-row lg:justify-evenly'>
       <div className='mb-3 p-3 bg-white drop-shadow-lg w-full rounded lg:mb-0'>
@@ -61,12 +59,12 @@ const CreateForm = () => {
         </select>
 
         {/* Add button */}
-        <button className='bg-blue-500 text-white px-5 py-2 rounded' onClick={() => {
+        <button className='bg-blue-500 text-white px-5 py-2 rounded disabled:opacity-50' onClick={() => {
           dispatch(addNewVideo({ title, video_url, videoCategory }))
           dispatch(setTitle(""));
-          // dispatch(setCategory(categories[0].category));
+          dispatch(setCategory(""));
           dispatch(setVideoUrl(""));
-        }}>Add</button>
+        }} disabled={!categories.length} >Add</button>
 
       </div>
     </div>

@@ -38,7 +38,7 @@ const buckets = [
     },
     {
         categoryId: "31",
-        categoryName: "Buisness",
+        categoryName: "Business",
         videos: [
             {
                 id: "ca1",

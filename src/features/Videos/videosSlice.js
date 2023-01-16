@@ -25,9 +25,10 @@ const videosSlice = createSlice({
             }
         },
         addNewVideo: (state, action)=>{
-            const {title, video_url, videoCategory} = action.payload;
-            if(title && video_url && videoCategory){
-                console.log(title,video_url, videoCategory);
+            let {title, video_url, videoCategory} = action.payload;
+            if(title && video_url){
+                if(!videoCategory) videoCategory = state.categories[0].categoryName;
+                // console.log(title,video_url, videoCategory);
                 state.categories.forEach((ele)=>{
                     if(ele.categoryName === videoCategory){
                         const newVideoList = [...ele.videos, {id: String(ele.videos.length+1), title, video_url} ]
@@ -63,7 +64,7 @@ const videosSlice = createSlice({
         },
         updateVideo: (state, action)=>{
             const {id, title, video_url, videoCategory } = action.payload;
-            console.log(title, video_url, videoCategory);
+
             if (title && video_url && videoCategory) {
                 state.categories.forEach((ele) => {
                     if (ele.categoryName === videoCategory) {

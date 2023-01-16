@@ -29,7 +29,7 @@ const Buckets = () => {
     if (!destination) return;
 
     //if a user drags and drops back within same column
-    if (destination.droppableId === source.droppableId) return;
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
 
     //if a user drops in different column
     const sourceCategory = source.droppableId;
@@ -42,95 +42,71 @@ const Buckets = () => {
   }
 
   return (
-    // <Modal>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className='bg-white p-2 mx-2 my-8 border-2 border-blue-500 rounded-xl '>
+        <div className='pt-10 px-3 pb-3 xl:flex xl:gap-5 overflow-scroll xl:flex-row xl:px-10 md:px-8'>
+          {
+            categories.map((current, index) => {
+              const { categoryId, categoryName, videos } = current;
 
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div className='p-2 mx-2 my-8 border-2 border-blue-500 rounded-xl '>
-          <div className='pt-10 px-3 pb-3 xl:flex xl:gap-5 overflow-scroll xl:flex-row xl:px-10 md:px-8'>
-            {/* <h2 className='mb-3 text-xl font-medium' >Watch History</h2> */}
-            {
-              categories.map((current, index) => {
-                const { categoryId, categoryName, videos } = current;
-                // console.log(categoryName);
-                return (
+              return (
+                <div key={categoryId} className='bg-white drop-shadow-lg my-12 mb-16 rounded md:min-w-[400px] xl:w-[450px] xl:mb-12 self-start'>
 
-                  <div key={categoryId} className='relative bg-white drop-shadow-lg my-12 mb-16 p-3 pb-1 rounded-r rounded-b md:min-w-[400px] xl:w-[450px] xl:mb-12 self-start'>
+                  {/*---- category title div ----*/}
 
-                    {/*---- category title div ----*/}
+                  <div className='px-5 p-2 bg-blue-500 text-white -top-10 left-0 rounded-t flex gap-4 items-center justify-between'>
 
-                    <div className='absolute px-5 p-2 bg-blue-500 text-white -top-10 left-0 rounded-t flex gap-4 items-center'>
-
-                      {/* category title */}
-                      <div className='flex gap-1 items-center'>
-                        <h3 className='font-medium'>{categoryName}</h3>
-                        <span className='rounded-full  w-5 h-5 p-1 text-white text-sm flex justify-center items-center'>{videos.length}</span>
-                      </div>
-
-                      <div className='flex gap-3'>
-                        <button onClick={() => {
-                          dispatch(setPrevCategoryName(categoryName));
-                          dispatch(setNewCategoryName(categoryName));
-                          dispatch(openEditCategoryModal());
-                        }}><AiOutlineEdit /></button>
-                        <button onClick={() => {
-                          dispatch(removeBucket(categoryName));
-                        }}><AiOutlineDelete /></button>
-                      </div>
+                    {/* category title */}
+                    <div className='flex gap-1 items-center'>
+                      <h3 className='font-medium'>{categoryName}</h3>
+                      <span className='rounded-full  w-5 h-5 p-1 text-white text-sm flex justify-center items-center'>{videos.length}</span>
                     </div>
 
-                    {/*---- video cards div ----*/}
-                    <Droppable droppableId={categoryId}>
-                      {(droppableProvided, droppableSnapshot) => {
+                    {/* category edit & delete buttons */}
+                    <div className='flex gap-3'>
+                      <button onClick={() => {
+                        dispatch(setPrevCategoryName(categoryName));
+                        dispatch(setNewCategoryName(categoryName));
+                        dispatch(openEditCategoryModal());
+                      }}><AiOutlineEdit /></button>
+                      <button onClick={() => {
+                        dispatch(removeBucket(categoryName));
+                      }}><AiOutlineDelete /></button>
+                    </div>
 
-                        return (<div
-                          className='min-h-[50px] relative z-10'
-                          ref={droppableProvided.innerRef}
-                          {...droppableProvided.droppableProps}
-                        >
-                          {
-                            videos.map((video, index) => {
-                              const { id } = video;
-                              return (
-                                <Draggable key={id} draggableId={`${id}`} index={index}>
-                                  {(draggableProvided, draggableSnapshot) => {
-                                    if (draggableSnapshot.isDragging) {
-                                      draggableProvided.draggableProps.style.left = draggableProvided.draggableProps.style.offsetLeft;
-                                      draggableProvided.draggableProps.style.top = draggableProvided.draggableProps.style.offsetTop;
-                                    }
-
-                                    const style = {
-                                      ...draggableProvided.draggableProps.style,
-                                      position: 'static',
-                                    };
-
-                                    return (<div className='relative z-20'
-                                      ref={draggableProvided.innerRef}
-                                      {...draggableProvided.draggableProps}
-                                      {...draggableProvided.dragHandleProps}
-                                      style={style}
-                                    >
-                                      <Card category={categoryName} video={video} />
-                                    </div>)
-
-                                  }}
-                                </Draggable>
-                              )
-                            })
-                          }
-                          {droppableProvided.placeholder}
-                        </div>)
-
-                      }}
-                    </Droppable>
                   </div>
-                )
-              })
-            }
 
-          </div>
+                  {/*---- video cards div ----*/}
+                  <Droppable droppableId={categoryId}>
+
+                    {(droppableProvided, droppableSnapshot) => {
+                      return (<div
+                        className='min-h-[50px] p-3 pb-1'
+                        ref={droppableProvided.innerRef}
+                        {...droppableProvided.droppableProps}
+                      >
+                        {
+                          videos.map((video, index) => {
+                            const { id } = video;
+                            return (
+                              <Card key={id} category={categoryName} video={video} index={index} />
+                            )
+                          })
+                        }
+                        {droppableProvided.placeholder}
+                      </div>)
+                    }}
+
+                  </Droppable>
+
+                </div>
+              )
+
+            })
+          }
         </div>
-      </DragDropContext>
-    // </Modal>
+      </div>
+    </DragDropContext>
   )
 }
 
